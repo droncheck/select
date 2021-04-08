@@ -1,0 +1,100 @@
+.select
+  position: relative
+  z-index: 10
+  margin-bottom: 8px
+  &.open
+    .select
+      &__window
+        &::after
+          transform: scale(1, -1)
+  &.reverse
+    .select__dropdown
+      top: auto
+      bottom: 100%
+  &__window
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      right: 16px
+      top: 12px
+      width: 24px
+      height: 24px
+      background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16.2929 9.29289C16.6834 8.90237 17.3166 8.90237 17.7071 9.29289C18.0976 9.68342 18.0976 10.3166 17.7071 10.7071L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L6.29289 10.7071C5.90237 10.3166 5.90237 9.68342 6.29289 9.29289C6.68342 8.90237 7.31658 8.90237 7.70711 9.29289L12 13.5858L16.2929 9.29289Z' fill='%23302527'/%3E%3C/svg%3E") no-repeat center / 100%
+      pointer-events: none
+  &__input
+    display: block
+    position: relative
+    width: 100%
+    height: 48px
+    padding: 8px 56px 8px 16px
+    border: 1px solid $black-15
+    border-radius: 8px
+    background: #ffffff
+    box-shadow: none
+    overflow: hidden
+    text-overflow: ellipsis
+    cursor: pointer
+    &::placeholder
+      color: $black-30
+    &:focus,
+    &.focus,
+      border-color: $black-30
+      outline: none
+      &::selection
+        color: inherit
+        background-color: inherit
+  &__dropdown
+    display: none
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    padding: 4px
+    border-radius: 8px
+    background: #ffffff
+    box-shadow: $shadow-dropdown
+    &:focus
+      outline: none
+    &.open
+      display: block
+  &__list
+    max-height: 252px
+    overflow-y: auto
+    &:focus
+      outline: none
+    &::-webkit-scrollbar
+      width: 4px
+    &::-webkit-scrollbar-thumb
+      border-radius: 2px
+      background: $black-30
+      transition: background 0.25s
+      &:hover
+        color: $black-100
+  &__option
+    display: flex
+    align-items: center
+    position: relative
+    padding: 8px 16px 8px 48px
+    min-height: 40px
+    border-radius: 4px
+    cursor: pointer
+    transition: color 0.25s, background-color 0.25s
+    &::before
+      content: ''
+      position: absolute
+      left: 16px
+      top: 8px
+      width: 24px
+      height: 24px
+      border: 1px solid #E0DFDF
+      border-radius: 4px
+      background-repeat: no-repeat
+      background-position: center
+      background-color: #ffffff
+    &.selected
+      &::before
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.70711 5.2929C1.31658 4.90238 0.683418 4.90238 0.292893 5.2929C-0.0976311 5.68343 -0.0976311 6.31659 0.292893 6.70712L5.29289 11.7071C5.69802 12.1122 6.36002 12.0948 6.74329 11.669L15.7433 1.66897C16.1128 1.25846 16.0795 0.626173 15.669 0.256714C15.2585 -0.112745 14.6262 -0.0794662 14.2567 0.331044L5.96181 9.5476L1.70711 5.2929Z' fill='%23302527'/%3E%3C/svg%3E%0A")
+    &.hover
+      color: $link
+      background: $black-5
